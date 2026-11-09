@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday tiyuuuu</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Pacifico&family=Montserrat&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Poppins,sans-serif;
+  overflow:hidden;
+  background:white;
+}
+
+.final-font{
+  font-family: 'Playfair Display', serif;
+   max-width: 85%;
+  margin: 0 auto;
+  line-height: 1.35;
+  text-align: center;
+}
+
+
+/* SCREENS */
+.screen{
+  width:100vw;height:100vh;
+  display:none;
+  position:relative;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+}
+.active{display:flex}
+
+/* TEXT */
+.big{font-size:46px}
+.small{font-size:14px}
+.red{color:red}
+.black{color:black}
+.purple{color:purple}
+.magic{font-family:Pacifico}
+.alt{font-family:Montserrat}
+
+/* BUTTON */
+button{
+  padding:12px 30px;
+  margin-top:20px;
+  border:none;
+  border-radius:30px;
+  background:#ff69b4;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+
+/* HEARTS */
+.heart{
+  position:absolute;
+  bottom:-40px;
+  font-size:20px;
+  animation:float 6s linear infinite;
+  opacity:0.7;
+}
+@keyframes float{
+  to{transform:translateY(-120vh);opacity:0}
+}
+
+/* GLOW TEXT */
+.glow{
+  animation:glow 2s infinite alternate, move 2s infinite ease-in-out;
+}
+@keyframes glow{
+  from{text-shadow:0 0 5px pink}
+  to{text-shadow:0 0 20px violet}
+}
+@keyframes move{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+}
+
+/* MESSAGE BOX */
+.msg-box{
+  padding:18px 25px;
+  border-radius:20px;
+  border:2px solid rgba(255,255,255,0.5);
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(6px);
+  animation:boxGlow 2s infinite alternate;
+}
+@keyframes boxGlow{
+  from{box-shadow:0 0 8px rgba(255,182,255,0.4)}
+  to{box-shadow:0 0 18px rgba(216,180,254,0.9)}
+}
+
+/* DARK PURPLE */
+.dark{
+  background: radial-gradient(circle at top, #3a0f6f, #14001f);
+  color:#f5e9ff;
+}
+
+/* LIGHT PINK */
+.pink-bg{
+  background:#ffe4ec;
+  color:#5a0f2e;
+}
+
+/* CAKE */
+#cake{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:-250px;
+  opacity:0;
+  transition:bottom 1.2s ease, opacity 1s ease;
+}
+#cake.show{
+  bottom:40px;
+  opacity:1;
+}
+
+/* BALLOONS */
+.balloon{
+  position:absolute;
+  bottom:-100px;
+  width:50px;height:65px;
+  background:linear-gradient(145deg,#ff7ad9,#c77dff);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:600;
+  color:white;
+  font-size:20px;
+  box-shadow:0 0 14px #ffd6ff;
+  animation:rise 4s ease-out forwards, sparkle 1.5s infinite alternate;
+}
+.balloon::after{
+  content:'';
+  position:absolute;
+  bottom:-25px;
+  width:2px;height:25px;
+  background:white;
+}
+@keyframes rise{to{transform:translateY(-75vh)}}
+@keyframes sparkle{
+  from{box-shadow:0 0 10px #ffd6ff}
+  to{box-shadow:0 0 24px #d8b4fe}
+}
+
+/* FIREWORKS */
+.firework{
+  position:absolute;
+  width:6px;height:6px;
+  background:transparent;
+  animation:explode 1.2s ease-out forwards;
+}
+@keyframes explode{
+  to{
+    box-shadow:
+      0 -80px #ff7ad9,
+      56px -56px #c77dff,
+      80px 0 #ffd6ff,
+      56px 56px #ff9dfc,
+      0 80px #d8b4fe,
+      -56px 56px #ff7ad9,
+      -80px 0 #ffd6ff,
+      -56px -56px #c77dff;
+    opacity:0;
+  }
+}
+
+/* GIFT */
+.gift-box{
+  width:200px;height:200px;position:relative;
+}
+.gift-body{
+  width:100%;height:100%;
+  background:#ff4d6d;border-radius:12px;
+}
+.gift-lid{
+  position:absolute;top:-40px;width:100%;height:50px;
+  background:#ff7a8a;border-radius:12px 12px 0 0;
+  transform-origin:bottom;transition:transform 1s ease;
+}
+.open .gift-lid{transform:rotateX(120deg)}
+.shake{animation:shake .5s}
+@keyframes shake{
+  0%,100%{transform:rotate(0)}
+  25%{transform:rotate(2deg)}
+  75%{transform:rotate(-2deg)}
+}
+
+/* POSITIONING */
+.center-msg{position:absolute;top:10px}
+.center-btn{position:absolute;top:120px}
+
+@media (max-width: 768px) {
+  #cake.show{
+    bottom: 110px;   /* move cake higher on mobile */
+    width: 180px;    /* slightly smaller so it fits */
+  }
+
+@media (min-width: 1024px){
+  #s7{
+    justify-content:center;
+  }
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+  <source src="tekit.mp3">
+</audio>
+
+<div class="screen active" id="s1">
+  <div class="big black">Happy Birthday <span class="red">tiyuuuuu</span></div>
+  <div class="small black alt">You mean more to me than the words can ever explain</div>
+  <div class="big glow">It's Your Birthday!</div>
+  <div class="purple">Ready for your surprise</div>
+  <div class="small black magic">Something magical is about to unfold</div>
+  <button onclick="go(2)">Lets Celebrate</button>
+</div>
+
+<div class="screen" id="s2">
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDlkdjZscnI0YnoxMGV1eGxpbmZqMTRweHUzZzBkcTV3eThxeHk0byZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ruhRMwYZkcJ8q7QtqV/giphy.gif" width="520">
+  <div class="msg-box">Its Your special dayy yeyey!</div>
+  <button onclick="go(3)">Next</button>
+</div>
+
+<div class="screen" id="s3">
+  <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWdrZ2h1OW05d2JzemFmcTY0ZDNramxkYXM2Nzc3bjc4YXRoZHoxMSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vIIbrC80HHN7O/giphy.gif" width="520">
+  <div class="msg-box">Do you wanna see what i made??</div>
+  <button onclick="go(4)">Yes</button>
+  <button onclick="go(9)">No</button>
+</div>
+
+<div class="screen" id="s4">
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbHUycWZseXJrc2FxNm1wdnlzN3R0aTlpNXg5MmdsOTZxenpxaTRkOCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/sb08e2jEdp3J2xMgus/giphy.gif" width="420">
+  <div class="msg-box">Have a look at it, tiyuuuuu</div>
+  <button onclick="go(5)">Lets Goo</button>
+</div>
+
+<div class="screen" id="s9">
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExejRiM3RycmdqOGlnbWlvbHJiejJlcDlqaTlvdW54ZWM3N2djZHV4dyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/RCbXWg6QzBFCw/giphy.gif" width="520">
+  <div class="msg-box">How daree You 😤!! </div>
+  <button onclick="go(2)">Retry</button>
+</div>
+
+<div class="screen" id="s5">
+  <div class="msg-box center-msg">
+    <h1>Lets Celebrate!</h1>
+    <p class="small">click on the button to decorate</p>
+  </div>
+  <img id="cake" src="cake.png" width="220">
+  <button id="actionBtn" class="center-btn" onclick="lightUp()">Lets light up</button>
+</div>
+
+<div class="screen pink-bg" id="s6">
+  <div class="gift-box" id="giftBox">
+    <div class="gift-lid"></div>
+    <div class="gift-body"></div>
+  </div>
+  <button onclick="openGift()">Click to open</button>
+</div>
+
+<div class="screen pink-bg" id="s7">
+  <h1 class="final-font" id="finalMessage"> Hiee tiyuuu it's yourr bdayyyy hheheheh yayayayya i remember it okiee dumboo and yk how we 1st met it was so random and still 
+    soo goated like one of my fav things hehe and then we used to play bs on daily basis on call me teasing you and the vise versa ik this can be corny but i wanted to make something for yayayayya
+    u were always there for me when i needed yaa and thats what i like the most u almost showw up no matter what even when u were sick u still wished me on time so like thanks uske liye bhi 
+    whenever i thought bout u it just remind me of our good old happy times nothing else , you're soo soo soo strong istgg wanna be like you fr fr ik there are some thing u cant do alone but you'll eventually do that too
+    you remember when we 1st met irl i wass soo happy i still remember the dates btw 23rd of july you just carry this good calming aura around yaa thanks for making my days special and i hope 
+    your bday goess well too may u get everything u want and you always stay happy and yeah again happyyyyy bdayyy 
+    <h1>
+</div>
+
+<script>
+let stage=0, hearts=null, fireworks=null;
+
+function go(n){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('s'+n).classList.add('active');
+
+  if((n>=1 && n<=4) || n>=6) startHearts(); else stopHearts();
+  if(n===5) startFireworks(); else stopFireworks();
+}
+
+function startHearts(){
+  if(hearts) return;
+  hearts=setInterval(()=>{
+    let h=document.createElement("div");
+    h.className="heart";h.innerHTML="💖";
+    h.style.left=Math.random()*100+"vw";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
+  },300);
+}
+function stopHearts(){clearInterval(hearts);hearts=null}
+
+function startFireworks(){
+  if(fireworks) return;
+  fireworks=setInterval(()=>{
+    let f=document.createElement("div");
+    f.className="firework";
+    f.style.left=Math.random()*100+"vw";
+    f.style.top=Math.random()*60+"vh";
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),1200);
+  },500);
+}
+function stopFireworks(){clearInterval(fireworks);fireworks=null}
+
+function lightUp(){
+  stage++;
+  if(stage===1){
+    s5.classList.add("dark");
+    cake.classList.add("show");
+    actionBtn.innerText="Fly the ballon";
+  }else if(stage===2){
+    createLetterBalloons();
+    actionBtn.innerText="Well i have a message for you";
+  }else{
+    removeLetterBalloons();
+    go(6);
+  }
+}
+
+function createLetterBalloons(){
+  const t="HAPPY BIRTHDAY TIYUUUUU", s=45;
+  let x=innerWidth/2-(t.length*s)/2;
+  [...t].forEach((c,i)=>{
+    if(c===" ") return;
+    let b=document.createElement("div");
+    b.className="balloon";b.innerText=c;
+    b.style.left=x+i*s+"px";
+    document.body.appendChild(b);
+  });
+}
+function removeLetterBalloons(){
+  document.querySelectorAll(".balloon").forEach(b=>b.remove());
+}
+
+function openGift(){
+  giftBox.classList.add("shake");
+  setTimeout(()=>{
+    giftBox.classList.add("open");
+    setTimeout(()=>go(7),1200);
+  },500);
+}
+
+window.onload=()=>startHearts();
+document.addEventListener("click",()=>music.play(),{once:true});
+
+function fitFinalText(){
+  const el = document.getElementById("finalMessage");
+  if(!el) return;
+
+  let fontSize = 36; // start big
+  el.style.fontSize = fontSize + "px";
+
+  // shrink until it fits screen
+  while (
+    (el.scrollHeight > window.innerHeight * 0.8 ||
+     el.scrollWidth > window.innerWidth * 0.9) &&
+    fontSize > 14
+  ){
+    fontSize -= 1;
+    el.style.fontSize = fontSize + "px";
+  }
+}
+
+// run when final screen opens
+const originalGo = go;
+go = function(n){
+  originalGo(n);
+  if(n === 7){
+    setTimeout(fitFinalText, 50);
+  }
+};
+
+// also refit on resize (PC window resize)
+window.addEventListener("resize", fitFinalText);
+
+</script>
+
+</body>
+</html>
+
+
